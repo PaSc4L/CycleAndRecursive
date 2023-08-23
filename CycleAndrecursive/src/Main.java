@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,6 +9,9 @@ public class Main {
         //System.out.println("The sum is: "+ sumRecursive(3));
         //fibonacciNumbersCycle(6);
         //fibonacciNumbersRecursive(6);
+        //Integer[] array = {1,4,2,64,25,4444,2,111};
+        //printArrayCycle(array);
+        //printArrayRecursive(array);
 
     }
 
@@ -85,12 +89,22 @@ public class Main {
         }
     }
 
-    public static void printArrayCycle(Integer number){
-
+    public static void printArrayCycle(Integer[] numbers){
+        for(int i = 0; i<numbers.length; i++){
+            System.out.println("The array's "+ (i+1) + ". value is: " + numbers[i]);
+        }
     }
-    public static void printArrayRecursive(Integer number){
-
+    public static void printArrayRecursive(Integer[] numbers){
+        printArrayRecursive(numbers,1);
     }
+    public static void printArrayRecursive(Integer[] numbers, Integer counter){
+        if(numbers.length != 0){
+            System.out.println("The array's "+ counter + ". value is: " + numbers[0]);
+            counter++;
+            printArrayRecursive(Arrays.copyOfRange(numbers,1, numbers.length),counter);
+        }
+    }
+
     public static void digitCounterCycle(Integer number){
 
     }
@@ -106,7 +120,7 @@ public class Main {
     public static void realNumberCycle(Integer number){
 
     }
-    public static void realNumberrecursive(Integer number){
+    public static void realNumberRecursive(Integer number){
 
     }
 }
