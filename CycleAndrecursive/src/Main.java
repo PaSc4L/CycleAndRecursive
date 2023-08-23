@@ -4,8 +4,10 @@ public class Main {
 
         //printNumbersCycle(1,50);
         //printNumbersRecursive(1,50);
-        System.out.println("The sum is: "+ sumCycle(3));
-        System.out.println("The sum is: "+ sumRecursive(3));
+        //System.out.println("The sum is: "+ sumCycle(3));
+        //System.out.println("The sum is: "+ sumRecursive(3));
+        //fibonacciNumbersCycle(6);
+        //fibonacciNumbersRecursive(6);
 
     }
 
@@ -34,5 +36,77 @@ public class Main {
             sum += number + sumRecursive(number-1);
         }
         return sum;
+    }
+    public static void fibonacciNumbersCycle(Integer number){
+        Integer i = 2;
+        Integer[] fibonacciNumbers = new Integer[number+1];
+
+        fibonacciNumbers[0]=0;
+        if(number<0){
+            System.out.println("Incorrect value: " + number);
+            return;
+        }else if(number>=1){
+            fibonacciNumbers[1]=1;
+        }
+        while(i <=number){
+            fibonacciNumbers[i] = fibonacciNumbers[i-2] + fibonacciNumbers[i-1];
+            i ++;
+        }
+        for(int j = 1; j<number+1; j++){
+            System.out.println(j+". Fibonacci number is: " + fibonacciNumbers[j]);
+        }
+
+    }
+    public static void fibonacciNumbersRecursive(Integer number){
+        Integer number1 = 1;
+        Integer number0 = 0;
+        Integer counter = 1;
+        fibonacciNumbersRecursive(number, number0, number1, counter);
+
+    }
+    public static void fibonacciNumbersRecursive(Integer number, Integer number0, Integer number1, Integer counter){
+
+        Integer fibonacciNumber;
+        if(number-1 > 0) {
+            fibonacciNumber = number1 + number0;
+            if(number0 == 0){
+                System.out.println(counter + ". Fibonacci number is: " + number1);
+                counter++;
+                System.out.println(counter + ". Fibonacci number is: " + fibonacciNumber);
+                counter++;
+            }else{
+                System.out.println(counter + ". Fibonacci number is: " + fibonacciNumber);
+                counter++;
+            }
+            number0 = number1;
+            number1 = fibonacciNumber;
+
+            fibonacciNumbersRecursive(number-1, number0, number1, counter);
+        }
+    }
+
+    public static void printArrayCycle(Integer number){
+
+    }
+    public static void printArrayRecursive(Integer number){
+
+    }
+    public static void digitCounterCycle(Integer number){
+
+    }
+    public static void digitCounterRecursive(Integer number){
+
+    }
+    public static void digitSumcycle(Integer number){
+
+    }
+    public static void digitSumRecursive(Integer number){
+
+    }
+    public static void realNumberCycle(Integer number){
+
+    }
+    public static void realNumberrecursive(Integer number){
+
     }
 }
