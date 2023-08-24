@@ -14,8 +14,10 @@ public class Main {
         //printArrayRecursive(array);
         //System.out.println("The number is "+ digitCounterCycle(3321) + " digit(s) long.");
         //System.out.println("The number is "+ digitCounterRecursive(3321) + " digit(s) long.");
-        System.out.println("The sum of the number's digitsis: " + digitSumcycle(2301));
-        System.out.println("The sum of the number's digitsis: " + digitSumRecursive(2301));
+        //System.out.println("The sum of the number's digitsis: " + digitSumcycle(2301));
+        //System.out.println("The sum of the number's digitsis: " + digitSumRecursive(2301));
+        System.out.println("The factorial for the number is: " + factorialCycle(5));
+        System.out.println("The factorial for the number is: " + factorialRecursive(5));
 
     }
 
@@ -170,10 +172,18 @@ public class Main {
         }
         return sum;
     }
-    public static void realNumberCycle(Integer number){
-
+    public static Integer factorialCycle(Integer number){
+        Integer factorial = 1;
+        for(int i =1; i<=number; i++){
+            factorial = factorial*i;
+        }
+        return factorial;
     }
-    public static void realNumberRecursive(Integer number){
-
+    public static Integer factorialRecursive(Integer number){
+        Integer factorial = 1;
+        if(number!=0){
+            factorial = number * factorialRecursive(number-1);
+        }
+        return factorial;
     }
 }
