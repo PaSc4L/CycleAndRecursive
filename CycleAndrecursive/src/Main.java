@@ -16,8 +16,10 @@ public class Main {
         //System.out.println("The number is "+ digitCounterRecursive(3321) + " digit(s) long.");
         //System.out.println("The sum of the number's digitsis: " + digitSumcycle(2301));
         //System.out.println("The sum of the number's digitsis: " + digitSumRecursive(2301));
-        System.out.println("The factorial for the number is: " + factorialCycle(5));
-        System.out.println("The factorial for the number is: " + factorialRecursive(5));
+        //System.out.println("The factorial for the number is: " + factorialCycle(5));
+        //System.out.println("The factorial for the number is: " + factorialRecursive(5));
+        //System.out.println("The result is: " + powerCycle(2,4));
+        //System.out.println("The result is: " + powerRecursive(2,4));
 
     }
 
@@ -31,6 +33,7 @@ public class Main {
             System.out.println(i);  //printing the numbers out
         }
     }
+
     /**
      * print numbers recursive
      * @param first number (from when to start the count)
@@ -56,6 +59,7 @@ public class Main {
         }
         return sum; //return the sum
     }
+
     /**
      * Sum recursive
      * @param number a number that will be the last in the sum
@@ -68,89 +72,143 @@ public class Main {
         }
         return sum; //return sum
     }
-    public static void fibonacciNumbersCycle(Integer number){
-        Integer i = 2;
-        Integer[] fibonacciNumbers = new Integer[number+1];
 
-        fibonacciNumbers[0]=0;
-        if(number<0){
+    /**
+     * fibonacci numbers cycle
+     * @param number  tells how many fibonacci numbers we want to print out
+     */
+    public static void fibonacciNumbersCycle(Integer number){
+        Integer i = 2;  //the first two fibonacci numbers are 1's
+        Integer[] fibonacciNumbers = new Integer[number+1]; //the size is larger than the number since we aute set the 0th element
+        fibonacciNumbers[0]=0;  //0th element is 0
+
+        if(number<0){   //checking if value is correct
             System.out.println("Incorrect value: " + number);
-            return;
-        }else if(number>=1){
+            return; //return if it is incorrect
+        }else if(number>=1){    //else setting the first element to one
             fibonacciNumbers[1]=1;
         }
         while(i <=number){
-            fibonacciNumbers[i] = fibonacciNumbers[i-2] + fibonacciNumbers[i-1];
-            i ++;
+            fibonacciNumbers[i] = fibonacciNumbers[i-2] + fibonacciNumbers[i-1];    //counting the current fibonacci number
+            i++; //increment i to go to count the next element until we reach number
         }
-        for(int j = 1; j<number+1; j++){
+        for(int j = 1; j<number+1; j++){    //printing out result
             System.out.println(j+". Fibonacci number is: " + fibonacciNumbers[j]);
         }
 
     }
+
+    /**
+     * fibonacci recursive
+     * @param  number tells how many fibonacci numbers we want to print out
+     */
     public static void fibonacciNumbersRecursive(Integer number){
-        Integer number1 = 1;
-        Integer number0 = 0;
-        Integer counter = 1;
-        fibonacciNumbersRecursive(number, number0, number1, counter);
+        if(number<0){   //checking if value is correct
+            System.out.println("Incorrect value: " + number);
+            return; //return if it is incorrect
+        }
+        Integer number1 = 1;    //first fibonacci number
+        Integer number0 = 0;    //0th fibonacci number
+        Integer counter = 1;    //counter that will count which fibonacci number we are printing out
+        fibonacciNumbersRecursive(number, number0, number1, counter);   //call the functions with more parameters
 
     }
-    public static void fibonacciNumbersRecursive(Integer number, Integer number0, Integer number1, Integer counter){
+
+    /**
+     * fibonacci recursive
+     * @param number tells how many fibonacci numbers we want to print out
+     *
+     * @param number0 and
+     * @param number1 added together will be the next fibonacci number's value
+     *
+     * @param counter is counting which fibonacci number we are counting (needed for printing out the result)
+     */
+    public static void fibonacciNumbersRecursive(Integer number, Integer number0, Integer number1, Integer counter){    //overloaded function to pass more values
 
         Integer fibonacciNumber;
-        if(number-1 > 0) {
-            fibonacciNumber = number1 + number0;
-            if(number0 == 0){
+        if(number-1 > 0) {  //decrementing by 1 the number (without it we will print one more value out unnecesarry)
+            fibonacciNumber = number1 + number0;    //getting the current fibonacci number
+            if(number0 == 0){   //printing out first and second element
                 System.out.println(counter + ". Fibonacci number is: " + number1);
                 counter++;
                 System.out.println(counter + ". Fibonacci number is: " + fibonacciNumber);
                 counter++;
             }else{
-                System.out.println(counter + ". Fibonacci number is: " + fibonacciNumber);
+                System.out.println(counter + ". Fibonacci number is: " + fibonacciNumber);  //print out current element
                 counter++;
             }
-            number0 = number1;
-            number1 = fibonacciNumber;
+            number0 = number1;  //giving the number1's value to the number so when we call the function again, we have the next two values added together
+            number1 = fibonacciNumber;  //setting number1 to the new fibonacci number
 
-            fibonacciNumbersRecursive(number-1, number0, number1, counter);
+            fibonacciNumbersRecursive(number-1, number0, number1, counter); //calculate the next fibonacci value
         }
     }
 
+    /**
+     * print array cicle
+     * @param numbers array of numbers to print out
+     */
     public static void printArrayCycle(Integer[] numbers){
         for(int i = 0; i<numbers.length; i++){
             System.out.println("The array's "+ (i+1) + ". value is: " + numbers[i]);
         }
     }
+
+    /**
+     * print array recursive
+     * @param numbers array of numbers to print out
+     */
     public static void printArrayRecursive(Integer[] numbers){
-        printArrayRecursive(numbers,1);
+        printArrayRecursive(numbers,1); //calling the function with counter parameter
     }
+    /**
+     * print array recursive
+     * @param numbers array of numbers to print out
+     * @param counter counts which number is printed
+     */
     public static void printArrayRecursive(Integer[] numbers, Integer counter){
         if(numbers.length != 0){
             System.out.println("The array's "+ counter + ". value is: " + numbers[0]);
             counter++;
-            printArrayRecursive(Arrays.copyOfRange(numbers,1, numbers.length),counter);
+            printArrayRecursive(Arrays.copyOfRange(numbers,1, numbers.length),counter); // recursive call (only the array without the first number will be passed, so the array's length is smaller by every call)
         }
     }
 
+    /**
+     * digit counter cycle
+     * @param number the number whose digits will be counted
+     * @return the number of digits the number has
+     */
     public static Integer digitCounterCycle(Integer number){
         Integer counter = 0;
         do{
-            number /= 10;
-            counter++;
-        }while(number != 0);
+            number /= 10;   //decrementing the digits
+            counter++;  //counting the digit
+        }while(number != 0);    //if number is not zero count than there is still more diits to count
         return counter;
     }
 
+    /**
+     * digit counter recursive
+     * @param number the number whose digits will be counted
+     * @return the number of digits the number has
+     */
     public static Integer digitCounterRecursive(Integer number){
         Integer counter = 0;
         return digitCounterRecursive(number, counter);
     }
+    /**
+     * digit counter recursive
+     * @param number the number whose digits will be counted
+     * @param counter counts how many digits the number has
+     * @return the number of digits the number has
+     */
     public static Integer digitCounterRecursive(Integer number, Integer counter){
 
         if(number != 0){
             number /= 10;
-            counter++;
-            counter = digitCounterRecursive(number, counter);
+            counter++;  //counting number's digit
+            counter = digitCounterRecursive(number, counter);   //storing the counter's value from the called function
         }
         return counter;
     }
@@ -185,5 +243,22 @@ public class Main {
             factorial = number * factorialRecursive(number-1);
         }
         return factorial;
+    }
+
+    public static Integer powerCycle(Integer number, Integer power){
+        Integer result = 1;
+        for(int i=0; i<power; i++){
+            result = result*number;
+        }
+        return result;
+    }
+    public static Integer powerRecursive(Integer number, Integer power){
+        Integer result = 1;
+        if(power != 0) {
+            result = number*powerRecursive(number,power-1);
+        }else{
+            return 1;
+        }
+        return result;
     }
 }
