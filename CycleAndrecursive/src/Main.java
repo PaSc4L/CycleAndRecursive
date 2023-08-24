@@ -18,31 +18,52 @@ public class Main {
 
     }
 
+    /**
+     * print numbers cycle
+     * @param first number (from when to start the count)
+     * @param second number (what is the last counted number
+     */
     public static void printNumbersCycle(Integer first, Integer second){
-        for(int i = first; i<=second; i++){
-            System.out.println(i);
+        for(int i = first; i<=second; i++){ //for loop going trough the numbers
+            System.out.println(i);  //printing the numbers out
         }
     }
+    /**
+     * print numbers recursive
+     * @param first number (from when to start the count)
+     * @param second number (what is the last counted number
+     */
     public static void printNumbersRecursive(Integer first, Integer second){
-        System.out.println(first);
-        first++;
-        if(first <= second){
-            printNumbersRecursive(first, second);
+        System.out.println(first);  //printing the first element
+        first++;    //incrementing the first element
+        if(first <= second){    //checking if it is out of bounds
+            printNumbersRecursive(first, second);   //if not, call the function again with the new first value
         }
     }
+
+    /**
+     * Sum cycle
+     * @param number a number that will be the last in the sum
+     * @return every number added until number
+     */
     public static Integer sumCycle(Integer number){
-        Integer sum = 0;
-        for(int i = 0; i<=number; i++){
-            sum += i;
+        Integer sum = 0;    //initializing the sum
+        for(int i = 0; i<=number; i++){ //for loop until we reach the last number
+            sum += i;   //add to sum the current number
         }
-        return sum;
+        return sum; //return the sum
     }
+    /**
+     * Sum recursive
+     * @param number a number that will be the last in the sum
+     * @return every number added until number
+     */
     public static Integer sumRecursive(Integer number){
-        Integer sum = 0;
-        if(number != 0){
-            sum += number + sumRecursive(number-1);
+        Integer sum = 0;    //Initializing sum
+        if(number != 0){    //check if number is not zero
+            sum += number + sumRecursive(number-1); //if not zero add it to sum, and call the function with a decreased number (we already added the number so we need to add the one below it)
         }
-        return sum;
+        return sum; //return sum
     }
     public static void fibonacciNumbersCycle(Integer number){
         Integer i = 2;
