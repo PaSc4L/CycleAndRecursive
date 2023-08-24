@@ -12,6 +12,9 @@ public class Main {
         //Integer[] array = {1,4,2,64,25,4444,2,111};
         //printArrayCycle(array);
         //printArrayRecursive(array);
+        System.out.println("The number is "+ digitCounterCycle(3321) + " digit(s) long.");
+        System.out.println("The number is "+ digitCounterRecursive(3321) + " digit(s) long.");
+
 
     }
 
@@ -105,11 +108,26 @@ public class Main {
         }
     }
 
-    public static void digitCounterCycle(Integer number){
-
+    public static Integer digitCounterCycle(Integer number){
+        Integer counter = 0;
+        do{
+            number /= 10;
+            counter++;
+        }while(number != 0);
+        return counter;
     }
-    public static void digitCounterRecursive(Integer number){
+    public static Integer digitCounterRecursive(Integer number){
+        Integer counter = 0;
+        return digitCounterRecursive(number, counter);
+    }
+    public static Integer digitCounterRecursive(Integer number, Integer counter){
 
+        if(number != 0){
+            number /= 10;
+            counter++;
+            counter = digitCounterRecursive(number, counter);
+        }
+        return counter;
     }
     public static void digitSumcycle(Integer number){
 
