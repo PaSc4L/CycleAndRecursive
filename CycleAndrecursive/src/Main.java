@@ -12,9 +12,10 @@ public class Main {
         //Integer[] array = {1,4,2,64,25,4444,2,111};
         //printArrayCycle(array);
         //printArrayRecursive(array);
-        System.out.println("The number is "+ digitCounterCycle(3321) + " digit(s) long.");
-        System.out.println("The number is "+ digitCounterRecursive(3321) + " digit(s) long.");
-
+        //System.out.println("The number is "+ digitCounterCycle(3321) + " digit(s) long.");
+        //System.out.println("The number is "+ digitCounterRecursive(3321) + " digit(s) long.");
+        System.out.println("The sum of the number's digitsis: " + digitSumcycle(2301));
+        System.out.println("The sum of the number's digitsis: " + digitSumRecursive(2301));
 
     }
 
@@ -137,6 +138,7 @@ public class Main {
         }while(number != 0);
         return counter;
     }
+
     public static Integer digitCounterRecursive(Integer number){
         Integer counter = 0;
         return digitCounterRecursive(number, counter);
@@ -150,11 +152,23 @@ public class Main {
         }
         return counter;
     }
-    public static void digitSumcycle(Integer number){
 
+    public static Integer digitSumcycle(Integer number){
+        Integer remainder = 0;
+        do{
+            remainder += (number%10);
+            number /= 10;
+        }while(number != 0);
+        return remainder;
     }
-    public static void digitSumRecursive(Integer number){
-
+    public static Integer digitSumRecursive(Integer number){
+        Integer sum = 0;
+        if(number != 0){
+            sum = (number%10);
+            number /= 10;
+            sum += digitSumRecursive(number);
+        }
+        return sum;
     }
     public static void realNumberCycle(Integer number){
 
