@@ -213,48 +213,84 @@ public class Main {
         return counter;
     }
 
+    /**
+     * digit sum cycle
+     * @param number
+     * @return number's digits added together
+     */
     public static Integer digitSumcycle(Integer number){
         Integer remainder = 0;
         do{
-            remainder += (number%10);
-            number /= 10;
+            remainder += (number%10);   //add the last digit of the number
+            number /= 10;   //decrease the number by one digit
         }while(number != 0);
         return remainder;
     }
+
+    /**
+     * digit sum recursive
+     * @param number
+     * @return number's digits added together
+     */
     public static Integer digitSumRecursive(Integer number){
         Integer sum = 0;
-        if(number != 0){
-            sum = (number%10);
-            number /= 10;
-            sum += digitSumRecursive(number);
+        if(number != 0){    //check if number has no more digits
+            sum = (number%10);  //add digit to sum
+            number /= 10;   //decrease the number by one digit
+            sum += digitSumRecursive(number);   //recursive call on the remaining number
         }
         return sum;
     }
+
+    /**
+     * factorial cycle
+     * @param number
+     * @return number's factorial
+     */
     public static Integer factorialCycle(Integer number){
         Integer factorial = 1;
-        for(int i =1; i<=number; i++){
+        for(int i =1; i<=number; i++){  //counting factorial
             factorial = factorial*i;
         }
         return factorial;
     }
+
+    /**
+     * factorial recursive
+     * @param number
+     * @return number's factorial
+     */
     public static Integer factorialRecursive(Integer number){
         Integer factorial = 1;
         if(number!=0){
-            factorial = number * factorialRecursive(number-1);
+            factorial = number * factorialRecursive(number-1); //counting factorial and call the function again with decreased number
         }
         return factorial;
     }
 
+    /**
+     * power cycle
+     * @param number
+     * @param power
+     * @return the nummber on the power
+     */
     public static Integer powerCycle(Integer number, Integer power){
         Integer result = 1;
-        for(int i=0; i<power; i++){
+        for(int i=0; i<power; i++){ //counting the result with cycle
             result = result*number;
         }
         return result;
     }
+
+    /**
+     * power recursive
+     * @param number
+     * @param power
+     * @return the nummber on the power
+     */
     public static Integer powerRecursive(Integer number, Integer power){
         Integer result = 1;
-        if(power != 0) {
+        if(power != 0) {    //multiplicating until power is zero
             result = number*powerRecursive(number,power-1);
         }else{
             return 1;
