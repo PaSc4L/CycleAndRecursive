@@ -21,6 +21,7 @@ public class Main {
         //System.out.println("The result is: " + powerCycle(2,4));
         //System.out.println("The result is: " + powerRecursive(2,4));
         System.out.println("The reversed text is: " + reverseStringCycle("text"));
+        System.out.println("The reversed text is: " + reverseStringRecursive("text"));
 
     }
 
@@ -308,6 +309,15 @@ public class Main {
     }
 
     public static String reverseStringRecursive(String text){
-        return text;
+        String reversed = "";
+        return reverseStringRecursive(text, reversed);
+    }
+    public static String reverseStringRecursive(String text, String reversed){
+
+        if(text.length()!=0){
+            reversed += reverseStringRecursive(text.substring(1), reversed);
+            reversed += text.charAt(0);
+        }
+        return reversed;
     }
 }
