@@ -20,6 +20,7 @@ public class Main {
         //System.out.println("The factorial for the number is: " + factorialRecursive(5));
         //System.out.println("The result is: " + powerCycle(2,4));
         //System.out.println("The result is: " + powerRecursive(2,4));
+        System.out.println("The reversed text is: " + reverseStringCycle("text"));
 
     }
 
@@ -296,5 +297,17 @@ public class Main {
             return 1;
         }
         return result;
+    }
+
+    public static String reverseStringCycle(String text){
+        StringBuilder reversed = new StringBuilder();
+        for(int i = text.length()-1;i>=0; i--){
+            reversed.append(text.charAt(i));
+        }
+        return reversed.toString();
+    }
+
+    public static String reverseStringRecursive(String text){
+        return text;
     }
 }
