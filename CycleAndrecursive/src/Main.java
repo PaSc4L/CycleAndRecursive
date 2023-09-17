@@ -9,7 +9,7 @@ public class Main {
         //System.out.println("The sum is: "+ sumRecursive(3));
         //fibonacciNumbersCycle(6);
         //fibonacciNumbersRecursive(6);
-        //Integer[] array = {1,4,2,64,25,4444,2,111};
+        //int[] array = {1,4,2,64,25,4444,2,111};
         //printArrayCycle(array);
         //printArrayRecursive(array);
         //System.out.println("The number is "+ digitCounterCycle(3321) + " digit(s) long.");
@@ -28,7 +28,7 @@ public class Main {
      * @param first number (from when to start the count)
      * @param second number (what is the last counted number
      */
-    public static void printNumbersCycle(Integer first, Integer second){
+    public static void printNumbersCycle(int first, int second){
         for(int i = first; i<=second; i++){ //for loop going trough the numbers
             System.out.println(i);  //printing the numbers out
         }
@@ -39,7 +39,7 @@ public class Main {
      * @param first number (from when to start the count)
      * @param second number (what is the last counted number
      */
-    public static void printNumbersRecursive(Integer first, Integer second){
+    public static void printNumbersRecursive(int first, int second){
         System.out.println(first);  //printing the first element
         first++;    //incrementing the first element
         if(first <= second){    //checking if it is out of bounds
@@ -52,7 +52,7 @@ public class Main {
      * @param number a number that will be the last in the sum
      * @return every number added until number
      */
-    public static Integer sumCycle(Integer number){
+    public static int sumCycle(int number){
         Integer sum = 0;    //initializing the sum
         for(int i = 0; i<=number; i++){ //for loop until we reach the last number
             sum += i;   //add to sum the current number
@@ -65,8 +65,8 @@ public class Main {
      * @param number a number that will be the last in the sum
      * @return every number added until number
      */
-    public static Integer sumRecursive(Integer number){
-        Integer sum = 0;    //Initializing sum
+    public static int sumRecursive(Integer number){
+        int sum = 0;    //Initializing sum
         if(number != 0){    //check if number is not zero
             sum += number + sumRecursive(number-1); //if not zero add it to sum, and call the function with a decreased number (we already added the number so we need to add the one below it)
         }
@@ -77,9 +77,9 @@ public class Main {
      * fibonacci numbers cycle
      * @param number  tells how many fibonacci numbers we want to print out
      */
-    public static void fibonacciNumbersCycle(Integer number){
-        Integer i = 2;  //the first two fibonacci numbers are 1's
-        Integer[] fibonacciNumbers = new Integer[number+1]; //the size is larger than the number since we aute set the 0th element
+    public static void fibonacciNumbersCycle(int number){
+        int i = 2;  //the first two fibonacci numbers are 1's
+        int[] fibonacciNumbers = new int[number+1]; //the size is larger than the number since we aute set the 0th element
         fibonacciNumbers[0]=0;  //0th element is 0
 
         if(number<0){   //checking if value is correct
@@ -102,14 +102,14 @@ public class Main {
      * fibonacci recursive
      * @param  number tells how many fibonacci numbers we want to print out
      */
-    public static void fibonacciNumbersRecursive(Integer number){
+    public static void fibonacciNumbersRecursive(int number){
         if(number<0){   //checking if value is correct
             System.out.println("Incorrect value: " + number);
             return; //return if it is incorrect
         }
-        Integer number1 = 1;    //first fibonacci number
-        Integer number0 = 0;    //0th fibonacci number
-        Integer counter = 1;    //counter that will count which fibonacci number we are printing out
+        int number1 = 1;    //first fibonacci number
+        int number0 = 0;    //0th fibonacci number
+        int counter = 1;    //counter that will count which fibonacci number we are printing out
         fibonacciNumbersRecursive(number, number0, number1, counter);   //call the functions with more parameters
 
     }
@@ -123,9 +123,9 @@ public class Main {
      *
      * @param counter is counting which fibonacci number we are counting (needed for printing out the result)
      */
-    public static void fibonacciNumbersRecursive(Integer number, Integer number0, Integer number1, Integer counter){    //overloaded function to pass more values
+    public static void fibonacciNumbersRecursive(int number, int number0, int number1, int counter){    //overloaded function to pass more values
 
-        Integer fibonacciNumber;
+        int fibonacciNumber;
         if(number-1 > 0) {  //decrementing by 1 the number (without it we will print one more value out unnecesarry)
             fibonacciNumber = number1 + number0;    //getting the current fibonacci number
             if(number0 == 0){   //printing out first and second element
@@ -148,7 +148,7 @@ public class Main {
      * print array cicle
      * @param numbers array of numbers to print out
      */
-    public static void printArrayCycle(Integer[] numbers){
+    public static void printArrayCycle(int[] numbers){
         for(int i = 0; i<numbers.length; i++){
             System.out.println("The array's "+ (i+1) + ". value is: " + numbers[i]);
         }
@@ -158,7 +158,7 @@ public class Main {
      * print array recursive
      * @param numbers array of numbers to print out
      */
-    public static void printArrayRecursive(Integer[] numbers){
+    public static void printArrayRecursive(int[] numbers){
         printArrayRecursive(numbers,1); //calling the function with counter parameter
     }
     /**
@@ -166,7 +166,7 @@ public class Main {
      * @param numbers array of numbers to print out
      * @param counter counts which number is printed
      */
-    public static void printArrayRecursive(Integer[] numbers, Integer counter){
+    public static void printArrayRecursive(int[] numbers, int counter){
         if(numbers.length != 0){
             System.out.println("The array's "+ counter + ". value is: " + numbers[0]);
             counter++;
@@ -179,8 +179,8 @@ public class Main {
      * @param number the number whose digits will be counted
      * @return the number of digits the number has
      */
-    public static Integer digitCounterCycle(Integer number){
-        Integer counter = 0;
+    public static int digitCounterCycle(int number){
+        int counter = 0;
         do{
             number /= 10;   //decrementing the digits
             counter++;  //counting the digit
@@ -193,8 +193,8 @@ public class Main {
      * @param number the number whose digits will be counted
      * @return the number of digits the number has
      */
-    public static Integer digitCounterRecursive(Integer number){
-        Integer counter = 0;
+    public static int digitCounterRecursive(int number){
+        int counter = 0;
         return digitCounterRecursive(number, counter);
     }
     /**
@@ -203,7 +203,7 @@ public class Main {
      * @param counter counts how many digits the number has
      * @return the number of digits the number has
      */
-    public static Integer digitCounterRecursive(Integer number, Integer counter){
+    public static int digitCounterRecursive(int number, int counter){
 
         if(number != 0){
             number /= 10;
@@ -218,8 +218,8 @@ public class Main {
      * @param number
      * @return number's digits added together
      */
-    public static Integer digitSumcycle(Integer number){
-        Integer remainder = 0;
+    public static int digitSumcycle(int number){
+        int remainder = 0;
         do{
             remainder += (number%10);   //add the last digit of the number
             number /= 10;   //decrease the number by one digit
@@ -232,8 +232,8 @@ public class Main {
      * @param number
      * @return number's digits added together
      */
-    public static Integer digitSumRecursive(Integer number){
-        Integer sum = 0;
+    public static int digitSumRecursive(int number){
+        int sum = 0;
         if(number != 0){    //check if number has no more digits
             sum = (number%10);  //add digit to sum
             number /= 10;   //decrease the number by one digit
@@ -247,8 +247,8 @@ public class Main {
      * @param number
      * @return number's factorial
      */
-    public static Integer factorialCycle(Integer number){
-        Integer factorial = 1;
+    public static int factorialCycle(int number){
+        int factorial = 1;
         for(int i =1; i<=number; i++){  //counting factorial
             factorial = factorial*i;
         }
@@ -260,8 +260,8 @@ public class Main {
      * @param number
      * @return number's factorial
      */
-    public static Integer factorialRecursive(Integer number){
-        Integer factorial = 1;
+    public static int factorialRecursive(int number){
+        int factorial = 1;
         if(number!=0){
             factorial = number * factorialRecursive(number-1); //counting factorial and call the function again with decreased number
         }
@@ -274,8 +274,8 @@ public class Main {
      * @param power
      * @return the nummber on the power
      */
-    public static Integer powerCycle(Integer number, Integer power){
-        Integer result = 1;
+    public static int powerCycle(int number, int power){
+        int result = 1;
         for(int i=0; i<power; i++){ //counting the result with cycle
             result = result*number;
         }
@@ -288,8 +288,8 @@ public class Main {
      * @param power
      * @return the nummber on the power
      */
-    public static Integer powerRecursive(Integer number, Integer power){
-        Integer result = 1;
+    public static int powerRecursive(int number, int power){
+        int result = 1;
         if(power != 0) {    //multiplicating until power is zero
             result = number*powerRecursive(number,power-1);
         }else{
