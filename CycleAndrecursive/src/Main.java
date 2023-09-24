@@ -20,8 +20,10 @@ public class Main {
         //System.out.println("The factorial for the number is: " + factorialRecursive(5));
         //System.out.println("The result is: " + powerCycle(2,4));
         //System.out.println("The result is: " + powerRecursive(2,4));
-        System.out.println("The reversed text is: " + reverseStringCycle("text"));
-        System.out.println("The reversed text is: " + reverseStringRecursive("text"));
+        //System.out.println("The reversed text is: " + reverseStringCycle("text"));
+        //System.out.println("The reversed text is: " + reverseStringRecursive("text"));
+        System.out.println("The Greatest common divisor is: " + getGCDCycle(40,816));
+        System.out.println("The Greatest common divisor is: " + getGCDRecursive(40,816));
 
     }
 
@@ -319,5 +321,31 @@ public class Main {
             reversed += text.charAt(0);
         }
         return reversed;
+    }
+
+    public static int getGCDCycle(int firstNumber, int secondNumber){
+        int gcd = 1;
+        for(int i= 1; i<=firstNumber && i<=secondNumber; i++){  //going from one because cant divide by 0
+            if(firstNumber%i == 0 && secondNumber%i == 0){
+                gcd = i;
+            }
+        }
+        return gcd;
+    }
+
+    public static int getGCDRecursive(int firstNumber, int secondNumber){
+        int gcd = 1;
+        if(firstNumber != secondNumber){
+            if(firstNumber>secondNumber){
+                firstNumber -= secondNumber;
+                gcd = getGCDRecursive(firstNumber,secondNumber);
+            }else{
+                secondNumber -= firstNumber;
+                gcd = getGCDRecursive(firstNumber,secondNumber);
+            }
+        }else {
+            gcd = firstNumber;
+        }
+        return gcd;
     }
 }
