@@ -192,6 +192,7 @@ public class Main {
         return counter;
     }
 
+
     /**
      * digit counter recursive
      * @param number the number whose digits will be counted
@@ -199,20 +200,10 @@ public class Main {
      */
     public static int digitCounterRecursive(int number){
         int counter = 0;
-        return digitCounterRecursive(number, counter);
-    }
-    /**
-     * digit counter recursive
-     * @param number the number whose digits will be counted
-     * @param counter counts how many digits the number has
-     * @return the number of digits the number has
-     */
-    public static int digitCounterRecursive(int number, int counter){
-
         if(number != 0){
             number /= 10;
             counter++;  //counting number's digit
-            counter = digitCounterRecursive(number, counter);   //storing the counter's value from the called function
+            counter += digitCounterRecursive(number);   //storing the counter's value from the called function
         }
         return counter;
     }
