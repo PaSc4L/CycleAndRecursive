@@ -22,8 +22,8 @@ public class Main {
         //System.out.println("The result is: " + powerRecursive(2,4));
         //System.out.println("The reversed text is: " + reverseStringCycle("text"));
         //System.out.println("The reversed text is: " + reverseStringRecursive("text"));
-        System.out.println("The Greatest common divisor is: " + getGCDCycle(40,816));
-        System.out.println("The Greatest common divisor is: " + getGCDRecursive(40,816));
+        //System.out.println("The Greatest common divisor is: " + getGCDCycle(40,816));
+        //System.out.println("The Greatest common divisor is: " + getGCDRecursive(40,816));
 
     }
 
@@ -302,49 +302,67 @@ public class Main {
         return result;
     }
 
+    /**
+     * reverse string cycle
+     * @param text
+     * @return reversed text
+     */
     public static String reverseStringCycle(String text){
+        StringBuilder reversed = new StringBuilder();   //initializing strinbouilder
+        for(int i = text.length()-1;i>=0; i--){ //going trough the text from the end
+            reversed.append(text.charAt(i)); //putting the characters into a new reversed text
+        }
+        return reversed.toString(); //returning reversed string
+    }
+
+    /**
+     * reverse string recursive
+     * @param text
+     * @return reversed string
+     */
+    public static String reverseStringRecursive(String text){
         StringBuilder reversed = new StringBuilder();
-        for(int i = text.length()-1;i>=0; i--){
-            reversed.append(text.charAt(i));
+        if(text.length()!=0){   //call the method until the we reach the end of the text
+            reversed.append(reverseStringRecursive(text.substring(1))); //adding the returned text to the reversed
+            reversed.append(text.charAt(0)); // addig the first letter from current text
         }
         return reversed.toString();
     }
 
-    public static String reverseStringRecursive(String text){
-        String reversed = "";
-        return reverseStringRecursive(text, reversed);
-    }
-    public static String reverseStringRecursive(String text, String reversed){
-
-        if(text.length()!=0){
-            reversed += reverseStringRecursive(text.substring(1), reversed);
-            reversed += text.charAt(0);
-        }
-        return reversed;
-    }
-
+    /**
+     * get Greatest Common Divisor cycle
+     * @param firstNumber
+     * @param secondNumber
+     * @return
+     */
     public static int getGCDCycle(int firstNumber, int secondNumber){
         int gcd = 1;
         for(int i= 1; i<=firstNumber && i<=secondNumber; i++){  //going from one because cant divide by 0
-            if(firstNumber%i == 0 && secondNumber%i == 0){
+            if(firstNumber%i == 0 && secondNumber%i == 0){  //if i can divide both numbers than it's the new gcd
                 gcd = i;
             }
         }
         return gcd;
     }
 
+    /**
+     * get Greatest Common Divisor recursive
+     * @param firstNumber
+     * @param secondNumber
+     * @return
+     */
     public static int getGCDRecursive(int firstNumber, int secondNumber){
         int gcd = 1;
-        if(firstNumber != secondNumber){
-            if(firstNumber>secondNumber){
+        if(firstNumber != secondNumber){ //the gdc is when the numbers will match
+            if(firstNumber>secondNumber){   //substracting the smaller number from the larger
                 firstNumber -= secondNumber;
                 gcd = getGCDRecursive(firstNumber,secondNumber);
-            }else{
+            }else{ //substracting the smaller number from the larger
                 secondNumber -= firstNumber;
                 gcd = getGCDRecursive(firstNumber,secondNumber);
             }
         }else {
-            gcd = firstNumber;
+            gcd = firstNumber;  //found the gcd
         }
         return gcd;
     }
